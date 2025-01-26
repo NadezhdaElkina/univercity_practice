@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+</head>
+<body>
+  <h1>Add New Task</h1>
+  <form id="taskForm">
+    <label for="title">Title:</label>
+    <input type="text" id="title" required><br><br>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" required><br><br>
+
+    <label for="due_date">Due Date:</label>
+    <input type="date" id="due_date" required><br><br>
+
+    <label for="user_id">User ID:</label>
+    <input type="number" id="user_id" required><br><br>
+
+    <button type="submit">Add Task</button>
+  </form>
+
+  <h2>Tasks</h2>
+  <ul id="taskList"></ul>
+
+  <script>
+    // Функция для загрузки и отображения задач
+    function loadTasks() {
+      fetch('http://localhost:3000/tasks')
+        .then(response => response.json())
+        .then(tasks => {
+          const taskList = document.getElementById('taskList');
+          
+          tasks.forEach(task => {
+            const taskItem = document.createElement('li');
+            taskItem.textContent = `ID: ${task.id} | ${task.title}: ${task.description} (Due: ${task.due_date})`;
+            taskList.appendChild(taskItem);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching tasks:', error);
+        });
+    }
+
+    // Загружаем задачи при загрузке страницы
+    window.onload = loadTasks;
+
+    // Добавление новой задачи
+    document.getElementById('taskForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Предотвращаем перезагрузку страницы
+  
+      const taskData = {
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value,
+        due_date: document.getElementById('due_date').value,
+        user_id: document.getElementById('user_id').value,
+      };
+  
+      fetch('http://localhost:3000/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(taskData),
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Task added successfully');
+        console.log(data); // Печатаем данные новой задачи
+  
+        // После добавления задачи снова загружаем все задачи
+        loadTasks();
+      })
+      .catch(error => {
+        alert('Error adding task');
+        console.error(error);
+      });
+    });
+  </script>
+</body>
+</html>
