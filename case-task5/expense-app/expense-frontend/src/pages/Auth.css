@@ -1,0 +1,58 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.auth-box .MuiTextField-root {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.auth-button {
+  width: 100%;
+  background-color: #007bff; 
+  color: white; 
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.auth-button:hover {
+  background-color: #0056b3; 
+}
+
+.secondary-button {
+  width: 100%;
+  background-color: #007bff; 
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background-color: #0056b3; 
+}
+
+
+.error-text {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}

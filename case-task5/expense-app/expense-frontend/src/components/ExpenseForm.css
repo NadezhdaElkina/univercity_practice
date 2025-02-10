@@ -1,0 +1,35 @@
+.expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .expense-form .MuiFormControl-root,
+  .expense-form .MuiTextField-root {
+    width: 100%;
+  }
+  
+  .expense-form .MuiButton-root {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .expense-form .MuiButton-root:hover {
+    background-color: #0056b3;
+  }
+  
+  .expense-form .MuiFormControlLabel-root {
+    margin-left: 5px;
+  }
+  
+  
