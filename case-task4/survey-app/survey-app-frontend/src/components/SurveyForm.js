@@ -7,7 +7,7 @@ const SurveyForm = ({ fetchUserSurveys, editingSurvey, setEditingSurvey }) => {
   const [questions, setQuestions] = useState([]);
   const token = localStorage.getItem("token");
 
-  // Load survey data into form when editing
+  
   useEffect(() => {
     if (editingSurvey) {
       setTitle(editingSurvey.title || "");
@@ -58,7 +58,7 @@ const SurveyForm = ({ fetchUserSurveys, editingSurvey, setEditingSurvey }) => {
  
   const handleSubmitSurvey = async () => {
     if (!title || !description || questions.length === 0) {
-      alert("Please enter a title, description, and at least one question.");
+      alert("Пожалуйста, введите название, описание и хотя бы один вопрос!");
       return;
     }
 
@@ -109,13 +109,13 @@ const SurveyForm = ({ fetchUserSurveys, editingSurvey, setEditingSurvey }) => {
     <Form>
       <Input
         type="text"
-        placeholder="Survey Title"
+        placeholder="Название опроса"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <Input
         type="text"
-        placeholder="Survey Description"
+        placeholder="Описание опроса"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
@@ -124,7 +124,7 @@ const SurveyForm = ({ fetchUserSurveys, editingSurvey, setEditingSurvey }) => {
         <QuestionContainer key={index}>
           <Input
             type="text"
-            placeholder="Question Text"
+            placeholder="Текст вопроса"
             value={q.text}
             onChange={(e) => updateQuestion(index, "text", e.target.value)}
           />
@@ -132,34 +132,34 @@ const SurveyForm = ({ fetchUserSurveys, editingSurvey, setEditingSurvey }) => {
             value={q.type}
             onChange={(e) => updateQuestion(index, "type", e.target.value)}
           >
-            <option value="text">Text</option>
-            <option value="radio">Multiple Choice</option>
-            <option value="checkbox">Checkbox</option>
+            <option value="text">Текст</option>
+            <option value="radio">Добавить вариант</option>
+            <option value="checkbox">Добавить выбор</option>
           </Select>
 
           {(q.type === "radio" || q.type === "checkbox") && (
             <OptionsContainer>
-              <Label>Options:</Label>
+              <Label>Варианты ответов:</Label>
               {q.options.map((option, oIndex) => (
                 <OptionInputContainer key={oIndex}>
                   <Input
                     type="text"
-                    placeholder={`Option ${oIndex + 1}`}
+                    placeholder={`Вариант ${oIndex + 1}`}
                     value={option}
                     onChange={(e) => updateOption(index, oIndex, e.target.value)}
                   />
                 </OptionInputContainer>
               ))}
               <AddOptionButton type="button" onClick={() => addOption(index)}>
-                + Add Option
+                Добавить вариант
               </AddOptionButton>
             </OptionsContainer>
           )}
         </QuestionContainer>
       ))}
-      <Button type="button" onClick={addQuestion}>+ Add Question</Button>
+      <Button type="button" onClick={addQuestion}> Добавить опрос</Button>
       <Button type="button" onClick={handleSubmitSurvey}>
-        {editingSurvey ? "Update Survey" : "Create Survey"}
+        {editingSurvey ? "Обновить опрос" : "Создать опрос"}
       </Button>
     </Form>
   );

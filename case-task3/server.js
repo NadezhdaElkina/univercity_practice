@@ -58,23 +58,23 @@ app.post('/register', (req, res) => {
   });
 });
 
-// Маршрут для получения задач
+
 app.get('/tasks', auth, (req, res) => {
-  // req.userId устанавливается в auth из токена
+  
   db.all('SELECT id, title, description, due_date FROM tasks WHERE user_id=?', req.userId, (err, tasks) => {
     if (err) return res.status(500).send('DB Error');
     res.json(tasks); 
   });  
 });
 
-// Маршрут для добавления задачи
+
 app.post('/tasks', auth, (req, res) => {
   db.run("INSERT INTO tasks(title, description, due_date, user_id) VALUES ($title, $description, $due_date, $user_id)",
   { 
     $title: req.body.title, 
     $description: req.body.description, 
     $due_date: req.body.due_date, 
-    $user_id: req.userId // устанавливается в auth
+    $user_id: req.userId 
   },
   (err) => {
     if (err) return res.status(500).send(err);
@@ -82,7 +82,7 @@ app.post('/tasks', auth, (req, res) => {
   });
 });
 
-// Маршрут для обновления задачи
+
 app.put('/tasks', auth, (req, res) => {
   db.run("UPDATE tasks SET title=$title, description=$description, due_date=$due_date WHERE id=$id AND user_id=$user_id",
   { 
@@ -90,7 +90,7 @@ app.put('/tasks', auth, (req, res) => {
     $title: req.body.title, 
     $description: req.body.description, 
     $due_date: req.body.due_date, 
-    $user_id: req.userId  // устанавливается в auth
+    $user_id: req.userId  
   },
   (err) => {
     if (err) return res.status(500).send(err);
@@ -98,12 +98,12 @@ app.put('/tasks', auth, (req, res) => {
   });
 });
 
-// Маршрут для удаления задачи
+
 app.delete('/tasks', auth, (req, res) => {
   db.run("DELETE FROM tasks WHERE id=$id AND user_id=$user_id",
   { 
     $id: req.body.id, 
-    $user_id: req.userId  // устанавливается в auth
+    $user_id: req.userId 
   },
   (err) => {
     if (err) return res.status(500).send(err);
@@ -111,7 +111,7 @@ app.delete('/tasks', auth, (req, res) => {
   });
 });
 
-// Запуск сервера
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });

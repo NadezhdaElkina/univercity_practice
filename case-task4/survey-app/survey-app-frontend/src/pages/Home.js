@@ -16,34 +16,34 @@ const Home = () => {
         if (Array.isArray(data)) {
           setSurveys(data);
         } else {
-          setError("Failed to load surveys. Please try again.");
+          setError("Не удалось загрузить опросы. Попробуйте снова");
         }
         setLoading(false);
       })
       .catch((err) => {
         console.error(" Error fetching surveys:", err);
-        setError("An error occurred while fetching surveys.");
+        setError("Произошла ошибка при загрузке опросов");
         setLoading(false);
       });
   }, []);
 
-  if (loading) return <Container>Loading...</Container>;
+  if (loading) return <Container>Загрузка...</Container>;
   if (error) return <Container>{error}</Container>;
 
   return (
     <Container>
-      <h2>Available Surveys</h2>
+      <h2>Доступные опросы</h2>
       <SurveyList>
         {surveys.length > 0 ? (
           surveys.map((survey) => (
             <SurveyCard key={survey.id}>
               <h3>{survey.title}</h3>
               <p>{survey.description}</p>
-              <StyledLink to={`/survey/${survey.id}`}>Take Survey</StyledLink>
+              <StyledLink to={`/survey/${survey.id}`}>Пройти опрос</StyledLink>
             </SurveyCard>
           ))
         ) : (
-          <p>No surveys available.</p>
+          <p>Нет доступных опросов.</p>
         )}
       </SurveyList>
     </Container>

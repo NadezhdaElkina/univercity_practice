@@ -31,13 +31,13 @@ const Register = () => {
 
   return (
     <Container>
-      <h2>Sign Up</h2>
+      <h2>Регистрация</h2>
       {error && <Error>{error}</Error>}
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"
           name="username"
-          placeholder="Username"
+          placeholder="Имя пользователя"
           value={formData.username}
           onChange={handleChange}
           required
@@ -45,7 +45,7 @@ const Register = () => {
         <Input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Электронная почта"
           value={formData.email}
           onChange={handleChange}
           required
@@ -53,12 +53,12 @@ const Register = () => {
         <Input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Пароль"
           value={formData.password}
           onChange={handleChange}
           required
         />
-        <Button type="submit">Register</Button>
+        <Button type="submit">Зарегистрироваться</Button>
       </Form>
     </Container>
   );

@@ -17,21 +17,21 @@ const ExpenseList = ({ expenses, setExpenses, userId }) => {
   };
 
   if (!expenses.length) {
-    return <Typography variant="h6" align="center">No expenses recorded</Typography>;
+    return <Typography variant="h6" align="center">Нет записанных расходов</Typography>;
   }
 
   return (
     <Paper elevation={3} sx={{ padding: 2, marginTop: 3 }}>
-      <Typography variant="h6" align="center">Expense List</Typography>
+      <Typography variant="h6" align="center">Список расходов</Typography>
       <List>
         {expenses.map((exp) => (
           <ListItem key={exp.id} sx={{ borderBottom: "1px solid #ddd" }}>
             <ListItemText 
               primary={`${exp.title} - $${exp.amount} (${exp.category})`} 
-              secondary={`Date: ${new Date(exp.createdAt).toLocaleDateString()}`} 
+              secondary={`Дата: ${new Date(exp.createdAt).toLocaleDateString()}`} 
             />
             <Button variant="contained" color="secondary" onClick={() => removeExpense(exp.id)}>
-              Delete
+            Удалить
             </Button>
           </ListItem>
         ))}

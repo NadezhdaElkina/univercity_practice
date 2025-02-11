@@ -8,7 +8,7 @@ const SurveyCard = ({ survey, fetchUserSurveys, setEditingSurvey }) => {
   };
 
   const handleDelete = async () => {
-    if (!window.confirm("Are you sure you want to delete this survey?")) return;
+    if (!window.confirm("Вы уверены, что хотите удалить этот опрос?")) return;
 
     try {
       const token = localStorage.getItem("token");
@@ -30,10 +30,10 @@ const SurveyCard = ({ survey, fetchUserSurveys, setEditingSurvey }) => {
       <h3>{survey.title}</h3>
       <p>{survey.description}</p>
       <ButtonContainer>
-        <Button onClick={handleEdit}>Edit</Button>
-        <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+        <Button onClick={handleEdit}>Редактировать</Button>
+        <DeleteButton onClick={handleDelete}>Удалить</DeleteButton>
         <Link to={`/survey/${survey.id}/results`}>
-          <ResultsButton>View Results</ResultsButton>
+          <ResultsButton>Посмотреть результаты</ResultsButton>
         </Link>
       </ButtonContainer>
     </Card>

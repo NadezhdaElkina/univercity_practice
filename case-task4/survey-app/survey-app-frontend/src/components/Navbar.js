@@ -13,17 +13,17 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <Logo>SurveyApp</Logo>
+      <Logo>МнениеПлюс</Logo>
       <NavLinks>
-        <StyledLink to="/">Surveys</StyledLink>
-        {isAuthenticated && <StyledLink to="/profile">Profile</StyledLink>}
+        <StyledLink to="/">Опросы</StyledLink>
+        {isAuthenticated && <StyledLink to="/profile">Профиль</StyledLink>}
         {!isAuthenticated ? (
           <>
-            <StyledLink to="/login">Login</StyledLink>
-            <StyledLink to="/register">Register</StyledLink>
+            <StyledLink to="/login">Войти</StyledLink>
+            <StyledLink to="/register">Регистрация</StyledLink>
           </>
         ) : (
-          <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+          <LogoutButton onClick={handleLogout}>Выйти</LogoutButton>
         )}
       </NavLinks>
     </Nav>

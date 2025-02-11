@@ -6,7 +6,7 @@ const SurveyList = ({ surveys, fetchUserSurveys, setEditingSurvey }) => {
   return (
     <SurveyListContainer>
       {surveys.length === 0 ? (
-        <NoSurveysMessage>No surveys created yet.</NoSurveysMessage>
+        <NoSurveysMessage>Опросы ещё не созданы</NoSurveysMessage>
       ) : (
         surveys.map((survey) => (
           <SurveyCard key={survey.id} survey={survey} fetchUserSurveys={fetchUserSurveys} setEditingSurvey={setEditingSurvey} />

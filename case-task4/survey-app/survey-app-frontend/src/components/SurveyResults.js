@@ -37,12 +37,12 @@ const SurveyResults = () => {
       })
       .catch((err) => {
         console.error("Error fetching survey responses:", err);
-        setError("Failed to fetch responses.");
+        setError("Не удалось загрузить ответы");
         setLoading(false);
       });
   }, [id]);
 
-  // Function to group responses by question
+  // функция группировки ответов
   const groupByQuestion = () => {
     const grouped = {};
     responses.forEach((response) => {
@@ -55,7 +55,7 @@ const SurveyResults = () => {
         };
       }
 
-      // Count answer occurrences
+      
       if (!grouped[question_id].answers[answer_text]) {
         grouped[question_id].answers[answer_text] = 0;
       }
@@ -65,14 +65,14 @@ const SurveyResults = () => {
     return grouped;
   };
 
-  if (loading) return <Container>Loading...</Container>;
+  if (loading) return <Container>Загрузка...</Container>;
   if (error) return <Container><ErrorText>{error}</ErrorText></Container>;
 
   const groupedResponses = groupByQuestion();
 
   return (
     <Container>
-      <h2>Survey Results</h2>
+      <h2>Результаты опроса</h2>
       {Object.keys(groupedResponses).length > 0 ? (
         Object.entries(groupedResponses).map(([question_id, data]) => {
           const labels = Object.keys(data.answers);
@@ -100,7 +100,7 @@ const SurveyResults = () => {
           );
         })
       ) : (
-        <NoResponsesMessage>No responses have been submitted for this survey yet.</NoResponsesMessage>
+        <NoResponsesMessage>На этот опрос пока нет ответов</NoResponsesMessage>
       )}
     </Container>
   );
@@ -108,7 +108,7 @@ const SurveyResults = () => {
 
 export default SurveyResults;
 
-// 🔹 Styled Components
+//  Styled Components
 const Container = styled.div`
   padding: 20px;
   max-width: 800px;

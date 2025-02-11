@@ -29,7 +29,7 @@ const Profile = () => {
 
   return (
     <Container>
-      <h2>My Surveys</h2>
+      <h2>Мои опросы</h2>
       <SurveyForm 
         fetchUserSurveys={fetchUserSurveys} 
         editingSurvey={editingSurvey} 

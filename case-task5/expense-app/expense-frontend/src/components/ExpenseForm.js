@@ -37,25 +37,25 @@ const ExpenseForm = ({ userId, setExpenses }) => {
 
   return (
     <div className="expense-form"> 
-      <TextField label="Title" value={title} onChange={(e) => setTitle(e.target.value)} fullWidth />
-      <TextField label="Amount" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} fullWidth />
-      <TextField label="Date" type="date" value={date} onChange={(e) => setDate(e.target.value)} fullWidth />
+      <TextField label="Название" value={title} onChange={(e) => setTitle(e.target.value)} fullWidth />
+      <TextField label="Сумма" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} fullWidth />
+      <TextField label="Дата" type="date" value={date} onChange={(e) => setDate(e.target.value)} fullWidth />
       <FormControl fullWidth>
-        <InputLabel>Category</InputLabel>
+        <InputLabel>Категория</InputLabel>
         <Select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <MenuItem value="Food">Food</MenuItem>
-          <MenuItem value="Transport">Transport</MenuItem>
-          <MenuItem value="Entertainment">Entertainment</MenuItem>
-          <MenuItem value="Job">Job</MenuItem>
-          <MenuItem value="Side-hustle">Side-hustle</MenuItem>
-          <MenuItem value="OTHER">OTHER</MenuItem>
+          <MenuItem value="Food">Еда</MenuItem>
+          <MenuItem value="Transport">Транспорт</MenuItem>
+          <MenuItem value="Entertainment">Развлечения</MenuItem>
+          <MenuItem value="Job">Работа</MenuItem>
+          <MenuItem value="Side-hustle">Подработка</MenuItem>
+          <MenuItem value="OTHER">Другое</MenuItem>
         </Select>
       </FormControl>
       <FormControlLabel 
         control={<Switch checked={isExpense} onChange={() => setIsExpense(!isExpense)} />} 
-        label={isExpense ? "Expense" : "Income"} 
+        label={isExpense ? "Расход" : "Доход"} 
       />
-      <Button onClick={addExpense}>Add</Button>
+      <Button onClick={addExpense}>Добавить</Button>
     </div>
   );
 };

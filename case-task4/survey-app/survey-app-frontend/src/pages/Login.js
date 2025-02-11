@@ -34,13 +34,13 @@ const Login = () => {
 
   return (
     <Container>
-      <h2>Login</h2>
+      <h2>Вход</h2>
       {error && <Error>{error}</Error>}
       <Form onSubmit={handleSubmit}>
         <Input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Электронная почта"
           value={formData.email}
           onChange={handleChange}
           required
@@ -48,12 +48,12 @@ const Login = () => {
         <Input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Пароль"
           value={formData.password}
           onChange={handleChange}
           required
         />
-        <Button type="submit">Login</Button>
+        <Button type="submit">Войти</Button>
       </Form>
     </Container>
   );

@@ -13,7 +13,7 @@ app.use(express.json());
 const dbConfig = {
     host: 'localhost',
     user: 'root',
-    password: '', // ввести личный пароль от сервера
+    password: 'Hara42Kiri42!', // в строку ввести личный пароль от сервера MySQL Server!
     database: 'EXPENSE'
 };
 

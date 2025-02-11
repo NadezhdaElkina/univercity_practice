@@ -14,7 +14,7 @@ const SurveyDetail = () => {
     fetch(`http://localhost:5000/api/surveys/${id}`)
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Survey not found or failed to load.");
+          throw new Error("Опрос не найден или не удалось загрузить");
         }
         return res.json();
       })
@@ -24,7 +24,7 @@ const SurveyDetail = () => {
       })
       .catch((err) => {
         console.error("Error fetching survey:", err);
-        setError("Failed to load survey.");
+        setError("Не удалось загрузить опрос");
         setLoading(false);
       });
   }, [id]);
@@ -72,16 +72,16 @@ const SurveyDetail = () => {
       });
   
       if (response.ok) {
-        alert("Survey submitted successfully!");
+        alert("Опрос успешно отправлен!");
         navigate("/");
       } else {
         const errorData = await response.json(); 
         console.error("Error submitting survey:", errorData);
-        setError(errorData.error || "Failed to submit survey.");
+        setError(errorData.error || "Не удалось отправить опрос");
       }
     } catch (error) {
       console.error("Error submitting survey:", error);
-      setError("Error submitting the survey.");
+      setError("Ошибка при отправке опроса");
     }
   };
   
@@ -130,7 +130,7 @@ const SurveyDetail = () => {
               ))}
           </QuestionCard>
         ))}
-        <SubmitButton type="submit">Submit</SubmitButton>
+        <SubmitButton type="submit">Отправить</SubmitButton>
       </Form>
     </Container>
   );
